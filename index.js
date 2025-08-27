@@ -1,4 +1,4 @@
-vlet btn = document.querySelector("button");
+let btn = document.querySelector("button");
 let search = document.querySelector("#name");
 let tbody = document.querySelector("#uni-table");
 
