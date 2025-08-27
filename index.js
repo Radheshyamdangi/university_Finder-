@@ -10,15 +10,20 @@ btn.addEventListener("click", async () => {
 
 async function getData() {
   let country = search.value.trim() || "india";
-let url = `https://thingproxy.freeboard.io/fetch/http://universities.hipolabs.com/search?country=${country}`;
 
+  // ✅ Fixed: use allorigins with JSON response
+  let url = `https://api.allorigins.win/get?url=${encodeURIComponent(
+    "http://universities.hipolabs.com/search?country=" + country
+  )}`;
 
- 
   tbody.innerHTML = "";
 
   try {
     let res = await fetch(url);
-    let data = await res.json();
+    let result = await res.json();
+
+    // ✅ Parse real JSON from "contents"
+    let data = JSON.parse(result.contents);
 
     if (data.length === 0) {
       let tr = document.createElement("tr");
@@ -40,7 +45,9 @@ let url = `https://thingproxy.freeboard.io/fetch/http://universities.hipolabs.co
 
       // web_pages
       let td2 = document.createElement("td");
-      td2.innerHTML = `<a href="${item.web_pages[0]}" target="_blank">${item.web_pages[0]}</a>` || "N/A";
+      td2.innerHTML = item.web_pages?.[0]
+        ? `<a href="${item.web_pages[0]}" target="_blank">${item.web_pages[0]}</a>`
+        : "N/A";
       tr.appendChild(td2);
 
       // name
@@ -64,15 +71,14 @@ let url = `https://thingproxy.freeboard.io/fetch/http://universities.hipolabs.co
       tr.appendChild(td6);
 
       tbody.appendChild(tr);
-    
-
-
-      
     }
   } catch (err) {
-  
-
     console.error("Error fetching data:", err);
+    let tr = document.createElement("tr");
+    let td = document.createElement("td");
+    td.colSpan = 6;
+    td.innerText = "⚠️ Error fetching data. Try again later.";
+    tr.appendChild(td);
+    tbody.appendChild(tr);
   }
 }
-  
