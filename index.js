@@ -1,18 +1,8 @@
-let btn = document.querySelector("button");
-let search = document.querySelector("#name");
-let tbody = document.querySelector("#uni-table");
-
-btn.addEventListener("click", async () => {
-  btn.innerText = "Fetching data .... ";
-  await getData();
-  btn.innerText = "Submit";
-});
-
 async function getData() {
   let country = search.value.trim() || "india";
 
-  // Using AllOrigins proxy
-  let url = `https://api.allorigins.win/get?url=${encodeURIComponent(
+  // Use /raw instead of /get
+  let url = `https://api.allorigins.win/raw?url=${encodeURIComponent(
     `http://universities.hipolabs.com/search?country=${country}`
   )}`;
 
@@ -20,10 +10,7 @@ async function getData() {
 
   try {
     let res = await fetch(url);
-    let wrappedData = await res.json();
-
-    // AllOrigins gives { contents: "string" }
-    let data = JSON.parse(wrappedData.contents);
+    let data = await res.json();   // directly get JSON
 
     if (data.length === 0) {
       let tr = document.createElement("tr");
