@@ -27,4 +27,3 @@ Finding universities across the globe can be tricky. This web app makes it easy 
 
 ---
 
-## 📂 Project Structure
