@@ -10,7 +10,8 @@ btn.addEventListener("click", async () => {
 
 async function getData() {
   let country = search.value.trim() || "india";
-let url = `https://api.allorigins.win/raw?url=${encodeURIComponent("http://universities.hipolabs.com/search?country=" + country)}`;
+let url = `https://thingproxy.freeboard.io/fetch/http://universities.hipolabs.com/search?country=${country}`;
+
 
  
   tbody.innerHTML = "";
