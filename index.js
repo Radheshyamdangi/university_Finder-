@@ -10,7 +10,7 @@ btn.addEventListener("click", async () => {
 
 async function getData() {
   let country = search.value.trim() || "india";
-  let url = `http://universities.hipolabs.com/search?country=${country}`;
+  let url = `https://universities.hipolabs.com/search?country=${country}`;
 
  
   tbody.innerHTML = "";
