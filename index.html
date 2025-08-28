@@ -1,35 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="styleSheet" href="style.css">
-    <script src="index.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>University Finder</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="index.js" defer></script>
 </head>
 <body>
+  <h1>Search Universities</h1>
 
-    <h1>Search university by country with additional Information </h1>
-    <label for="name">Search here by country name</label>
-    <input id="name" placeholder="Enter a city name : ">
-    <button type="submit">Submit</button>
-    <table style= "border:1 ; margin:10px">
-  <thead>
-    <tr>
-      <th>Domain</th>
-      <th>Web Pages</th>
-      <th>Name</th>
-      <th>Country</th>
-      <th>Alpha Two Code</th>
-      <th>State-Province</th>
-    </tr>
-  </thead>
-  <tbody id="uni-table"></tbody>
-</table>
+  <input type="text" id="name" placeholder="Enter country name"/>
+  <button>Submit</button>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    
+  <table style="border:1">
+    <thead>
+      <tr>
+        <th>Domain</th>
+        <th>Website</th>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Country Code</th>
+        <th>State/Province</th>
+      </tr>
+    </thead>
+    <tbody id="uni-table"></tbody>
+  </table>
 </body>
 </html>
