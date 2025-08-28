@@ -14,9 +14,7 @@ async function getData() {
   let country = search.value.trim() || "india";
 
   // Correct AllOrigins proxy (use /raw for direct JSON string)
-  let url = `https://api.allorigins.win/raw?url=${encodeURIComponent(
-    `https://universities.hipolabs.com/search?country=${country}`
-  )}`;
+ let url = `https://universities.hipolabs.com/search?country=${country}`;
 
   // Clear previous results
   tbody.innerHTML = "";
