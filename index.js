@@ -12,16 +12,14 @@ btn.addEventListener("click", async () => {
 // Fetch Data Function
 async function getData() {
   let country = search.value.trim() || "india";
-
-  // ✅ Direct call to Hipolabs API
   let url = `http://universities.hipolabs.com/search?country=${country}`;
 
-  // Clear previous results
+ 
   tbody.innerHTML = "";
 
   try {
     let res = await fetch(url);
-    let data = await res.json();
+    let data = await res.json(); // Directly parse JSON (no need for .contents)
 
     // If no results
     if (data.length === 0) {
@@ -75,8 +73,9 @@ async function getData() {
 
       tbody.appendChild(tr);
     }
-  } 
-  catch (err) {
+  } catch (err) {
+  
+
     console.error("Error fetching data:", err);
     let tr = document.createElement("tr");
     let td = document.createElement("td");
